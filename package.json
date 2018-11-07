@@ -1,0 +1,13 @@
+{
+  "name": "twitter-dt",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "dependencies": {
+    "dotenv-safe": "^6.1.0",
+    "twitter": "^1.7.1"
+  }
+}
