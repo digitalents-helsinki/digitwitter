@@ -6,12 +6,6 @@ const { writeFile } = require('fs')
 const { promisify } = require('util')
 const path = require('path')
 const Twitter = require('twitter')
-const {
-  consumer_key,
-  consumer_secret,
-  access_token_secret,
-  access_token_key
-} = require('./config')
 
 const writeFileAsync = promisify(writeFile)
 
