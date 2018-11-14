@@ -1,5 +1,5 @@
 // @ts-check
-import { slack } from '../constants'
+import { slack } from '../constants/'
 import { WebClient, RTMClient } from '@slack/client'
 
 const token = slack.legacy_token
