@@ -14,6 +14,7 @@ const commonConfig = require('./webpack.common')
 const devConfig = {
   mode: 'development',
   stats: 'errors-only',
+  devtool: 'source-map',
   plugins: [
     // @ts-ignore
     new NodemonPlugin()
