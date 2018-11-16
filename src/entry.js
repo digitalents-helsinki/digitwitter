@@ -1,7 +1,18 @@
 import path from 'path'
 import app from './config/express'
-import { sendMessage, listen } from './config/slack'
+import { initDb } from './config/mongoose'
+import { listen } from './config/slack'
 
-app.listen(3000, () => {
-  listen()
-})
+const start = async () => {
+  try {
+    await initDb()
+
+    app.listen(3000, () => {
+      listen()
+    })
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+start()
