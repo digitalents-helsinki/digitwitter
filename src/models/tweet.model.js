@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-export const TweetModel = new mongoose.Schema({
+const TweetSchema = new mongoose.Schema({
   hashtags: {
     type: Array,
     required: true
@@ -14,4 +14,4 @@ export const TweetModel = new mongoose.Schema({
   user: Object
 })
 
-export default mongoose.model('Tweet', TweetModel)
+export default mongoose.model('Tweet', TweetSchema)
