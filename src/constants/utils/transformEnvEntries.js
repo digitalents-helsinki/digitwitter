@@ -31,7 +31,7 @@ const transformEnvEntries = (namespace, appendUnderscore = true) => {
       {}
     )
   } else {
-    throw new Error(`no envs found with a prefix of '${namespace}_'`)
+    throw new Error(`no envs found with a prefix of '${q}'`)
   }
 }
 

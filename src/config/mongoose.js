@@ -1,9 +1,10 @@
 import mongoose from 'mongoose'
+import { mongo } from '@/constants/'
 
 export const initDb = () => {
   return new Promise(async (resolve, reject) => {
     try {
-      await mongoose.connect('mongodb://localhost:27017/datapeissi')
+      await mongoose.connect(`${mongo.uri}:${mongo.port}/${mongo.database}`)
 
       resolve()
     } catch (err) {
