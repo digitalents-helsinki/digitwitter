@@ -21,7 +21,12 @@ const commonConfig = {
     path: path.resolve(__workingDir, 'dist')
   },
   externals: [nodeExternals()],
-  plugins: [new WebpackBar()]
+  plugins: [new WebpackBar()],
+  resolve: {
+    alias: {
+      '@': path.resolve(__workingDir, 'src')
+    }
+  }
 }
 
 module.exports = commonConfig
