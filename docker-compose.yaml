@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  digitwitter-mongodb:
+    container_name: 'digitwitter-mongodb'
+    image: mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./docker/mongodb:/data/db/
+    command: mongod
