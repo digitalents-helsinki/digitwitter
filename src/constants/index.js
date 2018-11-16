@@ -1,8 +1,7 @@
-import transformEnv from './utils/transformEnv'
+import transformEnvEntries from './utils/transformEnvEntries'
 
-export const slack = transformEnv('slack')
-
-export const twitter = transformEnv('twitter')
+export const slack = transformEnvEntries('slack')
+export const twitter = transformEnvEntries('twitter')
 
 export default {
   twitter,
