@@ -20,25 +20,28 @@ const getTweets = async () => {
 
       for (var i = 0; i < tweets.statuses.length; i++) {
         var tweet = tweets.statuses[i]
-        TweetModel.find({ query_hashtag: hashtagQuery }, (err, hashtags) => {
-          if (hashtags.length == 0) {
-            tweets = new TweetModel({
-              query_hashtag: hashtagQuery,
-              text: tweet.text,
-              user: tweet.user,
-              id: tweet.id,
-              hashtags: [],
-              retweet_count: tweet.retweet_count,
-              favorite_count: tweet.favorite_count
-            })
-            if (tweets.retweet_count > 1) {
-              tweets.save(err => {
-                if (err) throw err
-                console.log('saved')
+        TweetModel.find(
+          { query_hashtag: hashtagQuery, id: tweet.id },
+          (err, hashtags) => {
+            if (hashtags.length == 0) {
+              tweets = new TweetModel({
+                query_hashtag: hashtagQuery,
+                text: tweet.text,
+                user: tweet.user,
+                id: tweet.id,
+                hashtags: [],
+                retweet_count: tweet.retweet_count,
+                favorite_count: tweet.favorite_count
               })
+              if (tweets.retweet_count > 1) {
+                tweets.save(err => {
+                  if (err) throw err
+                  console.log('saved')
+                })
+              }
             }
           }
-        })
+        )
       }
     })
   }
