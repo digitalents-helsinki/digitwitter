@@ -23,6 +23,7 @@ const getTweets = async () => {
         TweetModel.find(
           { query_hashtag: hashtagQuery, id: tweet.id },
           (err, hashtags) => {
+            console.log(hashtags)
             if (hashtags.length == 0) {
               tweets = new TweetModel({
                 query_hashtag: hashtagQuery,
