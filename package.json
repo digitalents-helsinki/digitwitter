@@ -5,7 +5,6 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack --config ./build/webpack.dev.js --watch",
-    "precommit": "lint-staged",
     "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('Please install dependencies using Yarn.')\""
   },
   "lint-staged": {
@@ -36,5 +35,10 @@
     "webpack-merge": "^4.1.4",
     "webpack-node-externals": "^1.7.2",
     "webpackbar": "^3.1.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
