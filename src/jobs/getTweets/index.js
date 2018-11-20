@@ -26,7 +26,6 @@ const getTweets = async () => {
             console.log(hashtags)
             if (hashtags.length == 0) {
               tweets = new TweetModel({
-                query_hashtag: hashtagQuery,
                 text: tweet.text,
                 user: tweet.user,
                 id: tweet.id,
@@ -36,7 +35,7 @@ const getTweets = async () => {
               })
               if (tweets.retweet_count > 1) {
                 tweets.save(err => {
-                  if (err) throw err
+                  if (err) console.error(err)
                   console.log('saved')
                 })
               }

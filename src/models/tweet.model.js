@@ -12,7 +12,10 @@ const TweetSchema = new mongoose.Schema({
   retweet_count: Number,
   favorite_count: Number,
   user: Object,
-  id: Number
+  id: {
+    type: Number,
+    unique: true
+  }
 })
 
 export default mongoose.model('Tweet', TweetSchema)
