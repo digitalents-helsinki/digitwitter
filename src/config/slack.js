@@ -3,6 +3,7 @@ import { slack } from '../constants/'
 import { WebClient, RTMClient } from '@slack/client'
 import TweetModel from '@/models/tweet.model'
 import { readFileAsync } from '@/utils/'
+import { _ } from 'underscore'
 import path from 'path'
 
 const token = slack.legacy_token
@@ -47,18 +48,28 @@ const postsTweets = async () => {
 }
 
 const callback = (err, data) => {
-  console.log(data)
+  var list = []
   for (let hashtags of data) {
-    console.log(hashtags.id)
+    if (typeof list[hashtags] === 'undefined') {
+      list.push({ hashtags: hashtags.query_hashtag })
+    }
+  }
+  var values = _.values(_.countBy(list))
+  var newlist = list.filter((e, i, a) => a.indexOf(e) === i)
+  for (var i = 0; i < newlist.length; i++) {
+    newlist[i].count = values[i]
+  }
+  var thelist = newlist.filter(item => {
+    return item.count !== undefined
+  })
+  for (let array of thelist) {
     web.chat
       .postMessage({
         channel,
-        text: 'https://twitter.com/search?q=' + hashtags.query_hashtag
+        text:
+          'https://twitter.com/search?q=' + array.hashtags + ' ' + array.count
       })
-      .then(res => {
-        //`res` contains information about the posted message
-        console.log('Message sent: ', res.ts)
-      })
+      .then(res => {})
       .catch(console.error)
   }
 }
